@@ -2,6 +2,7 @@ import React from 'react';
 import './Products.css';
 import ProductSingle from './ProductSingle';
 import { getProducts } from '../../actions/productsActions';
+import {convertCurrency} from '../../utils/utils';
 
 class Products extends React.Component {
     constructor(props) {
@@ -24,6 +25,7 @@ class Products extends React.Component {
             selectedId: id,
             openSingle: !this.state.openSingle
           }));
+          this.props.onCloseCart();
     }
     
     render() {
@@ -37,17 +39,17 @@ class Products extends React.Component {
         }
         return (
             <div>
-                    <div className="Products-container">
-                        {this.state.products.map(product => (
-                            <div className="Product-single">
-                                {product.name}
-                                <img class="Product-image-list" src={product.imageUrl} alt={product.name}/>
-                                <p>Price: {product.price} $</p>
-                                <button className="Button"
-                                 onClick={this.toggleSingleComponent.bind(this, product.id)}>Order</button>
-                            </div>
-                        ))}
-                    </div>
+                <div className="Products-container">
+                    {this.state.products.map(product => (
+                        <div className="Product-single">
+                            {product.name}
+                            <img class="Product-image-list" src={product.imageUrl} alt={product.name}/>
+                            <p>Price: {product.price}€  ({convertCurrency(product.price, '$')})</p>
+                            <button className="Button"
+                                onClick={this.toggleSingleComponent.bind(this, product.id)}>Order</button>
+                        </div>
+                    ))}
+                </div>
             </div>
         );
     }

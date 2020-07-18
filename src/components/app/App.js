@@ -1,14 +1,28 @@
 import React from 'react';
 import './App.css';
 import {Products} from '../products';
+import { Cart } from '../cart';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      openSingle: false
+      openCart: false
     };
   }
+
+  toggleCart() {
+    this.setState(state => ({
+        openCart: !state.openCart
+      }));
+  }
+
+  closeCart() {
+    this.setState(state => ({
+        openCart: false
+      }));
+  }
+
   render() {
     return (
       <div className="App">
@@ -16,8 +30,11 @@ class App extends React.Component {
           <h1>The Yummy pizza</h1>
         </header>
         <body>
+
           <div className="main-container">
-            <Products/>
+            <button onClick={this.toggleCart.bind(this)} className="Button">{ this.state.openCart ? 'Close cart' :  'Open cart'} </button>
+              {this.state.openCart ? <Cart/> : ''}
+            <Products onCloseCart={this.closeCart.bind(this)} />
           </div>
         </body>
       </div>

@@ -1,26 +1,26 @@
-import React from 'react';
-import './App.css';
-import {Products} from '../products';
-import { Cart } from '../cart';
+import React from "react";
+import "./App.css";
+import { Products } from "../products";
+import { Cart } from "../cart";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      openCart: false
+      openCart: false,
     };
   }
 
   toggleCart() {
-    this.setState(state => ({
-        openCart: !state.openCart
-      }));
+    this.setState((state) => ({
+      openCart: !state.openCart,
+    }));
   }
 
   closeCart() {
-    this.setState(state => ({
-        openCart: false
-      }));
+    this.setState((state) => ({
+      openCart: false,
+    }));
   }
 
   render() {
@@ -29,14 +29,18 @@ class App extends React.Component {
         <header className="App-header">
           <h1>The Yummy pizza</h1>
         </header>
-        <body>
-
-          <div className="main-container">
-            <button onClick={this.toggleCart.bind(this)} className="Button">{ this.state.openCart ? 'Close cart' :  'Open cart'} </button>
-              {this.state.openCart ? <Cart/> : ''}
-            <Products onCloseCart={this.closeCart.bind(this)} />
+        <div className="main-container">
+          <div className="Open-cart-container">
+            <button onClick={this.toggleCart.bind(this)} className="Button">
+              {this.state.openCart ? "Close cart" : "Open cart"}{" "}
+            </button>
           </div>
-        </body>
+          {this.state.openCart ? (
+            <Cart />
+          ) : (
+            <Products onCloseCart={this.closeCart.bind(this)} />
+          )}
+        </div>
       </div>
     );
   }

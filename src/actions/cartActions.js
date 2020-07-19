@@ -1,5 +1,6 @@
 import axios from "axios";
 import { BACKEND_URL } from "../config";
+import { getFormattedToken } from "../utils";
 
 export const getProductsFromStorage = () => {
   return localStorage.getItem("cart")
@@ -50,8 +51,9 @@ export const checkout = (products) => {
   const body = JSON.stringify(products);
   return axios.post(`${BACKEND_URL}orders`, body, {
     headers: {
-      "Content-Type": "application/json",
-    },
+        "Content-Type": "application/json",
+        "Authorization": getFormattedToken()
+    }
   });
 };
 

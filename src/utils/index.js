@@ -16,3 +16,12 @@ export const getFirstError = (response) => {
   let errors = response.response.data.errors;
   return errors[Object.keys(errors)[0]];
 };
+
+export const getFormattedToken = () => {
+  let token = localStorage.getItem("token");
+  return token ? `Bearer ${token}` : null;
+};
+
+export const isAuthenticated = () => {
+  return localStorage.getItem("token") ? true : false;
+};

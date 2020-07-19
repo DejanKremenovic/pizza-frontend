@@ -4,7 +4,7 @@ import {
   checkout,
   removeProductsFromStorage,
 } from "../../actions/cartActions";
-import { convertCurrency, getFirstError } from "../../utils/utils";
+import { convertCurrency, getFirstError } from "../../utils";
 import { DELIVERY_PRICE } from "../../config";
 import "./Cart.css";
 

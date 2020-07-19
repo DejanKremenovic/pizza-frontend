@@ -33,3 +33,22 @@
   margin-top: 3vmin;
   margin-bottom: 3vmin;
 }
+
+.Navigation-item:link,
+.Navigation-item:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid #4caf50;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 3vmin;
+  margin-right: 5px;
+}
+
+.Navigation-item:hover,
+.Navigation-item:active {
+  background-color: #4caf50;
+  color: white;
+}

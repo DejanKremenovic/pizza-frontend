@@ -1,7 +1,7 @@
 import React from "react";
 import { getSingleProduct } from "../../actions/productsActions";
 import { addToCart } from "../../actions/cartActions";
-import { convertCurrency } from "../../utils/utils";
+import { convertCurrency } from "../../utils";
 
 class ProductSingle extends React.Component {
   constructor(props) {
